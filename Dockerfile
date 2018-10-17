@@ -32,7 +32,7 @@ RUN python2 -m bash_kernel.install
 
 # Install Python 2 Juniper libraries
 RUN alias python="/usr/bin/python2"
-RUN pip2 install junos-eznc junos-netconify jxmlease jsnapy ansible
+RUN pip2 install junos-eznc junos-netconify jxmlease jsnapy ansible ipywidgets
 
 # Install Juniper's Ansible modules
 RUN ansible-galaxy install Juniper.junos
