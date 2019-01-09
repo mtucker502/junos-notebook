@@ -14,8 +14,11 @@ RUN python -m ipykernel install --user
 RUN python -m pip install bash_kernel
 RUN python -m bash_kernel.install
 
-# Install Python 2 Juniper libraries
-RUN pip install junos-eznc junos-netconify jxmlease jsnapy ansible
+# Install Python Juniper libraries
+RUN pip install junos-eznc junos-netconify jxmlease jsnapy ansible 
+
+# Install Ansible-Runner with tag feature
+RUN pip install https://github.com/mtucker502/ansible-runner/archive/issue-180.zip
 
 # Install Juniper's Ansible modules
 RUN ansible-galaxy install Juniper.junos
