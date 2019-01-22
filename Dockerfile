@@ -21,7 +21,7 @@ RUN pip install junos-eznc junos-netconify jxmlease jsnapy ansible
 RUN pip install https://github.com/mtucker502/ansible-runner/archive/issue-180.zip
 
 # Install Juniper's Ansible modules
-RUN ansible-galaxy install Juniper.junos
+RUN ansible-galaxy install Juniper.junos -p /etc/ansible/roles/
 
 # Change owner so Notebook notebook can write to it
 RUN chown -R jovyan:users /home/jovyan/.*
