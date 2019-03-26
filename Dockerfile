@@ -6,19 +6,19 @@ USER root
 
 # Install prereqs for pyez
 RUN apt-get update && \
-	apt-get install -yq build-essential \
-	libssl-dev
+        apt-get install -yq build-essential \
+        libssl-dev
 
 # Setup Python and Bash Kernels
-RUN python -m ipykernel install --user 
+RUN python -m ipykernel install --user
 RUN python -m pip install bash_kernel
 RUN python -m bash_kernel.install
 
-# Install Python 2 Juniper libraries
-RUN pip install junos-eznc junos-netconify jxmlease jsnapy ansible
+# Install Python Juniper libraries
+RUN pip install junos-eznc junos-netconify jxmlease jsnapy ansible ansible-runner
 
 # Install Juniper's Ansible modules
-RUN ansible-galaxy install Juniper.junos
+RUN ansible-galaxy install Juniper.junos -p /etc/ansible/roles/
 
 # Change owner so Notebook notebook can write to it
 RUN chown -R jovyan:users /home/jovyan/.*
@@ -28,3 +28,4 @@ RUN rm -fr /home/jovyan/.ansible*
 
 
 USER $NB_USER
+
